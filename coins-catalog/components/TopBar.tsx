@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useSearchStore } from "@/store/searchStore";
 import Image from "next/image";
@@ -44,7 +42,7 @@ export function TopBar() {
   ]);
 
   return (
-    <div className="flex flex-auto items-center justify-between p-4 bg-white shadow-md">
+    <div className="bg-white shadow-md p-4 md:flex md:items-center md:justify-between">
       <div className="flex items-center">
         <Image
           src="/icon.png"
@@ -53,13 +51,13 @@ export function TopBar() {
           height={40}
           className="rounded-full"
         />
-        <h3 className="ml-2 font-bold">Crypto Catalog</h3>
+        <h3 className="ml-2 font-bold text-lg">Crypto Catalog</h3>
       </div>
-      <div className="flex flex-1 max-w-xl mx-4 items-center gap-2">
+      <div className="mt-4 md:mt-0 md:flex md:flex-1 md:max-w-xl md:mx-4 md:items-center md:gap-2">
         <select
           value={localFilterField}
           onChange={(e) => setLocalFilterField(e.target.value)}
-          className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full md:w-auto px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="id">ID</option>
           <option value="symbol">Code</option>
@@ -70,7 +68,7 @@ export function TopBar() {
         </select>
         {localFilterField !== "price" &&
           localFilterField !== "percentage_change" && (
-            <div className="flex-1">
+            <div className="flex-1 mt-4 md:mt-0 md:ml-4">
               <input
                 type="text"
                 placeholder={`Search by ${localFilterField}`}
@@ -82,7 +80,7 @@ export function TopBar() {
           )}
       </div>
       {localFilterField === "price" && (
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex mt-4 md:mt-0 md:items-center md:justify-center md:gap-2">
           <input
             type="number"
             placeholder="Min Price"
@@ -90,7 +88,7 @@ export function TopBar() {
             onChange={(e) =>
               setLocalPriceRange([Number(e.target.value), localPriceRange[1]])
             }
-            className="w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full md:w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="number"
@@ -99,12 +97,12 @@ export function TopBar() {
             onChange={(e) =>
               setLocalPriceRange([localPriceRange[0], Number(e.target.value)])
             }
-            className="w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full md:w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       )}
       {localFilterField === "percentage_change" && (
-        <div className="flex items-center gap-2">
+        <div className="flex mt-4 md:mt-0 md:items-center md:gap-2">
           <input
             type="number"
             placeholder="Min Change %"
@@ -115,7 +113,7 @@ export function TopBar() {
                 localPercentageChangeRange[1],
               ])
             }
-            className="w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full md:w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="number"
@@ -127,11 +125,11 @@ export function TopBar() {
                 Number(e.target.value),
               ])
             }
-            className="w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full md:w-36 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       )}
-      <div className="hidden md:block text-lg font-semibold">
+      <div className="hidden md:block text-lg font-semibold mt-4 md:mt-0">
         By Mouad Mennioui
       </div>
     </div>

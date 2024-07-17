@@ -49,48 +49,58 @@ export function CoinTable({ coins }: CoinTableProps) {
   });
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Rank</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Symbol</TableHead>
-          <TableHead>Price</TableHead>
-          <TableHead>24h Change</TableHead>
-          <TableHead>Market Cap</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {filteredCoins.map((coin) => (
-          <TableRow key={coin.id}>
-            <TableCell>{coin.market_cap_rank}</TableCell>
-            <TableCell>
-              <Link href={`/coins/${coin.id}`} className="flex items-center">
-                <Image
-                  src={coin.image}
-                  alt={coin.name}
-                  width={40}
-                  height={40}
-                  className="w-6 h-6 mr-2"
-                />
-                {coin.name}
-              </Link>
-            </TableCell>
-            <TableCell>{coin.symbol.toUpperCase()}</TableCell>
-            <TableCell>${coin.current_price.toFixed(2)}</TableCell>
-            <TableCell
-              className={
-                coin.price_change_percentage_24h > 0
-                  ? "text-green-600"
-                  : "text-red-600"
-              }
-            >
-              {coin.price_change_percentage_24h.toFixed(2)}%
-            </TableCell>
-            <TableCell>${coin.market_cap.toLocaleString()}</TableCell>
+    <div className="overflow-x-auto">
+      <Table className="min-w-full">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="px-2 py-2">Rank</TableHead>
+            <TableHead className="px-2 py-2">Name</TableHead>
+            <TableHead className="px-2 py-2">Symbol</TableHead>
+            <TableHead className="px-2 py-2">Price</TableHead>
+            <TableHead className="px-2 py-2">24h Change</TableHead>
+            <TableHead className="px-2 py-2">Market Cap</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {filteredCoins.map((coin) => (
+            <TableRow key={coin.id}>
+              <TableCell className="px-2 py-2">
+                {coin.market_cap_rank}
+              </TableCell>
+              <TableCell className="px-2 py-2">
+                <Link href={`/coins/${coin.id}`} className="flex items-center">
+                  <Image
+                    src={coin.image}
+                    alt={coin.name}
+                    width={40}
+                    height={40}
+                    className="w-6 h-6 mr-2"
+                  />
+                  {coin.name}
+                </Link>
+              </TableCell>
+              <TableCell className="px-2 py-2">
+                {coin.symbol.toUpperCase()}
+              </TableCell>
+              <TableCell className="px-2 py-2">
+                ${coin.current_price.toFixed(2)}
+              </TableCell>
+              <TableCell
+                className={`px-2 py-2 ${
+                  coin.price_change_percentage_24h > 0
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
+              >
+                {coin.price_change_percentage_24h.toFixed(2)}%
+              </TableCell>
+              <TableCell className="px-2 py-2">
+                ${coin.market_cap.toLocaleString()}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }

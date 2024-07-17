@@ -14,13 +14,19 @@ interface PriceChartProps {
 
 export function PriceChart({ data }: PriceChartProps) {
   return (
-    <ResponsiveContainer width="80%" height={200}>
+    <ResponsiveContainer width="100%" height={270}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
-        <Tooltip />
-        <Line type="monotone" dataKey="price" stroke="#8004d5" />
+        <Tooltip contentStyle={{ backgroundColor: "#f0f0f0" }} />
+        <Line
+          type="monotone"
+          dataKey="price"
+          stroke="#8884d8"
+          strokeWidth={2}
+          dot={false}
+        />
       </LineChart>
     </ResponsiveContainer>
   );

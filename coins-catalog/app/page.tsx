@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       <TopBar />
-      <div className="h-4 m-4">
+      <div className="h-4 m-8">
         <CoinTable coins={filteredCoins} />
       </div>
     </>

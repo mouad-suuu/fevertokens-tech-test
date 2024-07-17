@@ -2,6 +2,8 @@
 
 ## the link to the deployed website
 
+https://fevertokens-tech-test-drab.vercel.app/
+
 Otherwise if ou want to check for yourself read below :
 
 ## Getting Started

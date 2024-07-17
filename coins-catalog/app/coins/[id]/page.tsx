@@ -72,7 +72,7 @@ export default function CoinDetails({ params }: { params: { id: string } }) {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Image
-                  src={coin.image}
+                  src={coin.image || coin.thumb}
                   alt={coin.name}
                   width={40}
                   height={40}
@@ -103,6 +103,12 @@ export default function CoinDetails({ params }: { params: { id: string } }) {
               <p className="mb-2">
                 <strong>Circulating Supply:</strong>{" "}
                 {coin.market_data.circulating_supply.toLocaleString()}
+              </p>
+              <p className="mb-2">
+                <strong>All-time High:</strong> ${coin.market_data.ath.usd}
+              </p>
+              <p className="mb-2">
+                <strong>All-time Low:</strong> ${coin.market_data.atl.usd}
               </p>
             </CardContent>
           </Card>
