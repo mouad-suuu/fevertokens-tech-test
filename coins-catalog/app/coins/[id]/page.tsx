@@ -3,12 +3,11 @@
 import { useState, useEffect } from "react";
 import { CryptoData } from "@/types";
 import Link from "next/link";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { PriceChart } from "@/components/PriceChart";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 export default function CoinDetails({ params }: { params: { id: string } }) {
   const [coin, setCoin] = useState<CryptoData | null>(null);
   const [priceHistory, setPriceHistory] = useState<
