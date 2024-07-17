@@ -1,10 +1,6 @@
 # Task 1
 
-It's using the latest version of Next.js with TypeScript and ShadcnUI
-
-## You can find a live version of the app here:
-
-https://fevertokens-tech-test-rho.vercel.app/
+## the link to the deployed website
 
 Otherwise if ou want to check for yourself read below :
 
@@ -15,6 +11,54 @@ Otherwise if ou want to check for yourself read below :
 - run ( pnpm run start --port=8000 ) to see the version of the production ready version
 
 Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
+
+# Project Structure
+
+```
+└── 📁coins-catalog
+    └── .eslintrc.json
+    └── .gitignore
+    └── 📁app
+        └── 📁api
+            └── 📁coins
+                └── route.ts
+        └── 📁coins
+            └── 📁[id]
+                └── page.tsx
+        └── globals.css
+        └── icon.png
+        └── layout.tsx
+        └── page.tsx
+    └── 📁components
+        └── CoinTable.tsx
+        └── PriceChart.tsx
+        └── TopBar.tsx
+        └── 📁ui
+            └── avatar.tsx
+            └── button.tsx
+            └── card.tsx
+            └── table.tsx
+    └── components.json
+    └── 📁lib
+        └── utils.ts
+    └── next-env.d.ts
+    └── next.config.mjs
+    └── package-lock.json
+    └── package.json
+    └── pnpm-lock.yaml
+    └── postcss.config.mjs
+    └── 📁public
+        └── next.svg
+        └── vercel.svg
+    └── README.md
+    └── 📁store
+        └── searchStore.ts
+    └── tailwind.config.ts
+    └── tsconfig.json
+    └── 📁types
+        └── coinsType.ts
+        └── index.ts
+```
 
 # Task 2
 
