@@ -1,6 +1,9 @@
+"use server";
+
 import { NextResponse } from "next/server";
 import { CryptoData } from "@/types";
 
+// i did add the link in here insted of the .env file so anyone can run it without need for looking for it
 const COINGECKO_URL =
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en";
 const MAX_RETRIES = 3;
