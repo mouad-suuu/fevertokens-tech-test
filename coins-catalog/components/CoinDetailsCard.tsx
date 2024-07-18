@@ -1,9 +1,12 @@
+// CoinDetailsCard.tsx
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CryptoData } from "@/types";
+import { TypeById } from "@/types/typeById";
 import Image from "next/image";
 
 interface CoinDetailsCardProps {
-  coin: CryptoData;
+  coin: TypeById;
 }
 
 export const CoinDetailsCard: React.FC<CoinDetailsCardProps> = ({ coin }) => (
@@ -11,7 +14,7 @@ export const CoinDetailsCard: React.FC<CoinDetailsCardProps> = ({ coin }) => (
     <CardHeader>
       <CardTitle className="flex items-center">
         <Image
-          src={coin.image || coin.thumb}
+          src={coin.image.large as string}
           alt={coin.name}
           width={40}
           height={40}

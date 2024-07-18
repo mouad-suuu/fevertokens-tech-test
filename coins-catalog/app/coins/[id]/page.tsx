@@ -1,17 +1,15 @@
+// CoinDetails.tsx
 "use client";
 
 import { useState, useEffect } from "react";
-import { CryptoData } from "@/types";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { PriceChart } from "@/components/PriceChart";
-import Image from "next/image";
+import { TypeById } from "@/types/typeById";
 import { CoinDetailsHeader } from "@/components/CoinDetailsHeader";
 import { CoinDetailsCard } from "@/components/CoinDetailsCard";
+import { PriceChart } from "@/components/PriceChart";
 import { Card } from "@/components/ui/card";
 
 export default function CoinDetails({ params }: { params: { id: string } }) {
-  const [coin, setCoin] = useState<CryptoData | null>(null);
+  const [coin, setCoin] = useState<TypeById | null>(null);
   const [priceHistory, setPriceHistory] = useState<
     { date: string; price: number }[]
   >([]);
@@ -33,8 +31,9 @@ export default function CoinDetails({ params }: { params: { id: string } }) {
         const coinData = await coinRes.json();
         const historyData = await historyRes.json();
 
-        console.log("Fetched coin data:", coinData); // Add this line
-        console.log("Fetched price history:", historyData); // Add this line
+        console.log("Fetched coin data:", coinData); // Log coin data
+        console.log("Coin image URL:", coinData.image); // Log image URL
+        console.log("Fetched price history:", historyData); // Log price history
 
         setCoin(coinData);
         setPriceHistory(
@@ -55,10 +54,7 @@ export default function CoinDetails({ params }: { params: { id: string } }) {
 
   return (
     <div className="space-y-6 mt-2 ml-2">
-      <CoinDetailsHeader
-        logoSrc={coin.image || coin.thumb}
-        coinName={coin.name}
-      />
+      <CoinDetailsHeader logoSrc={coin.image.large} coinName={coin.name} />
 
       <div className="flex flex-wrap">
         <div className="flex-1 min-w-[400px] p-5">
