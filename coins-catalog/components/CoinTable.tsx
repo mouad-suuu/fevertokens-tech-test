@@ -36,16 +36,19 @@ export function CoinTable({
   };
 
   return (
-    <div className="overflow-x-auto">
-      <Table className="min-w-full">
+    <div className="w-full overflow-x-auto">
+      <Table className="w-full">
         <TableHeader>
           <TableRow>
             <TableHead className="px-2 py-2">Rank</TableHead>
-            <TableHead className="px-2 py-2">Name</TableHead>
-            <TableHead className="px-2 py-2">Symbol</TableHead>
+            <TableHead className="px-2 py-2">Coin</TableHead>
             <TableHead className="px-2 py-2">Price</TableHead>
-            <TableHead className="px-2 py-2">24h Change</TableHead>
-            <TableHead className="px-2 py-2">Market Cap</TableHead>
+            <TableHead className="px-2 py-2 hidden sm:table-cell">
+              24h Change
+            </TableHead>
+            <TableHead className="px-2 py-2 hidden md:table-cell">
+              Market Cap
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -57,17 +60,19 @@ export function CoinTable({
               <TableCell className="px-2 py-2">
                 <Link href={`/coins/${coin.id}`} className="flex items-center">
                   <Image
-                    src={coin.image} // Assuming coin.image is of type string
+                    src={coin.image}
                     alt={coin.name}
-                    width={40}
-                    height={40}
+                    width={24}
+                    height={24}
                     className="w-6 h-6 mr-2"
                   />
-                  {coin.name}
+                  <div className="flex flex-col">
+                    <span className="font-medium">{coin.name}</span>
+                    <span className="text-sm text-gray-500">
+                      {coin.symbol.toUpperCase()}
+                    </span>
+                  </div>
                 </Link>
-              </TableCell>
-              <TableCell className="px-2 py-2">
-                {coin.symbol.toUpperCase()}
               </TableCell>
               <TableCell className="px-2 py-2">
                 {coin.current_price
@@ -75,7 +80,7 @@ export function CoinTable({
                   : "N/A"}
               </TableCell>
               <TableCell
-                className={`px-2 py-2 ${
+                className={`px-2 py-2 hidden sm:table-cell ${
                   coin.price_change_percentage_24h > 0
                     ? "text-green-600"
                     : "text-red-600"
@@ -85,7 +90,7 @@ export function CoinTable({
                   ? `${coin.price_change_percentage_24h.toFixed(2)}%`
                   : "N/A"}
               </TableCell>
-              <TableCell className="px-2 py-2">
+              <TableCell className="px-2 py-2 hidden md:table-cell">
                 {coin.market_cap
                   ? `$${coin.market_cap.toLocaleString()}`
                   : "N/A"}

@@ -70,16 +70,18 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <TopBar />
-      <div className="h-4 m-8">
-        <CoinTable
-          coins={displayedCoins}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          setCurrentPage={handlePageChange}
-        />
-      </div>
-    </>
+      <main className="flex-grow flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-4xl">
+          <CoinTable
+            coins={displayedCoins}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={handlePageChange}
+          />
+        </div>
+      </main>
+    </div>
   );
 }
