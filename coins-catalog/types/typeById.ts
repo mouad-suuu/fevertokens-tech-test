@@ -1,8 +1,5 @@
-import { ReactNode } from "react";
-
-// types.ts
 export interface TypeById {
-  market_cap_rank: ReactNode;
+  market_cap_rank: number;
   id: string;
   symbol: string;
   name: string;
